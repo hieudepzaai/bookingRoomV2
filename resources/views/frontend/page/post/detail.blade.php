@@ -19,6 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
+                    <x-post-preview-slider  />
                     <div class="w-100 gallary-area">
                         <div class="ribbon">Vip</div>
                         <ul id="image-gallery" class="gallery list-unstyled cS-hidden">

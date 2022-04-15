@@ -4,6 +4,7 @@ namespace App\Repository\post;
 
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class PostRepository implements PostRepositoryInterface
 {
@@ -60,11 +61,14 @@ class PostRepository implements PostRepositoryInterface
         });
     }
     public function getLatestPost() {
-        return $this->model->PostItem()->limit(8)->latest()->get();
+//        return $this->model->PostItem()->limit(8)->latest()->get();
+        return Cache::remember('LatestPost-Cache', 60*60*24 , function ()  {
+            return $this->model->PostItem()->limit(8)->latest()->get();
+        });
     }
     public function getForSoldPost() {
         return $this->model->PostItem()->whereCategoryId('1')->limit(8)->latest()->get();
-//        return cache()->remember('ForSoldPostCache', 60*60*24 , function ()  {
+//        return Cache::remember('ForSoldPostCache', 60*60*24 , function ()  {
 //            $this->model->PostItem()->whereCategoryId('1')->limit(8)->latest()->get();
 //        });
 

@@ -6,6 +6,7 @@ use Illuminate\View\Component;
 
 class postPreviewSlider extends Component
 {
+    public $sliders;
     /**
      * Create a new component instance.
      *
@@ -14,6 +15,7 @@ class postPreviewSlider extends Component
     public function __construct()
     {
         //
+//        $this->sliders = $sliders;
     }
 
     /**

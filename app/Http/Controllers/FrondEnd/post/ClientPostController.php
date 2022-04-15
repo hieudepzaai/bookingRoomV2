@@ -17,6 +17,7 @@ class ClientPostController extends Controller
         return view('frontend.page.home.index'  , [
             'for_sold_posts' => $this->repo->getForSoldPost() ,
             'for_rent_posts' => $this->repo->getForRentRoomPost() ,
+            'latest' => $this->repo->getLatestPost()
 
         ]);
     }

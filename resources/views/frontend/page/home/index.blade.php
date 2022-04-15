@@ -114,12 +114,16 @@
     </div>
     <!--end category-->
 
+    <!--section specific-->
+    <x-post-grid-list :posts="$latest" title="Bài đăng mới nhất" />
+    <!--end section specific-->
+
     <!--section specific slider-->
-    <x-post-slider-list :posts="$for_sold_posts" title="Cho thuê nhà" />
+    <x-post-slider-list :posts="$for_sold_posts" title="Bán nhà" />
     <!--end section specific slider-->
 
     <!--section specific-->
-    <x-post-grid-list :posts="$for_sold_posts" title="Cho thuê nhà" />
+    <x-post-grid-list :posts="$for_rent_posts" title="Cho thuê nhà" />
     <!--end section specific-->
 
     <!--section list view -->

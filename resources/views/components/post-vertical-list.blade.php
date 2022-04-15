@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12">
                 <a class="section-title">
-                    Cho thuê bất động sản
+                    {{ $title }}
                 </a>
             </div>
         </div>
