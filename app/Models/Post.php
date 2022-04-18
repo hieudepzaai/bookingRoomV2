@@ -78,7 +78,10 @@ class Post extends Model
         'area' => 'float',
         'priority' => 'int',
         'deposit_amount' => 'float',
-        'created_by' => 'int'
+        'created_by' => 'int',
+        'img_count' => 'int',
+        'bed_room_count' => 'int',
+
     ];
 
     protected $dates = [
@@ -105,7 +108,12 @@ class Post extends Model
         'slug',
         'img',
         'created_by',
-        'created_at'
+        'created_at',
+        'img_count',
+        'bed_room_count',
+        'balcony_count',
+        'type_of_apartment',
+        'interior_condition'
     ];
 
     public function scopePostDetail($query)

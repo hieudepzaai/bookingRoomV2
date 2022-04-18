@@ -54,11 +54,15 @@
     display: block;
     /*flex-flow: row;*/
     text-decoration: none;
+    height: 300px;
+    background-color: #f6f6f6;
 
 }
 .list-view .post-item-link-wrapper {
     display: flex;
     flex-flow: row;
+    height: auto;
+
 }
 .post-item-link-wrapper:visited{
     color: black;

@@ -18,7 +18,7 @@
                         {{ session('message') }}
                     </div>
                 @endif
-                <form class="w-100" method="post" action="{{route('post.create')}}" enctype="multipart/form-data">
+                <form class="w-100" method="post" action="{{route('user.createPost')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 mt-3">
                         <label for="email">Category</label>
@@ -32,7 +32,10 @@
                             <option></option>
                         </select>
                     </div>
-
+                    <div class="mb-3 mt-3">
+                        <label for="email">Number of unit</label>
+                        <input  value="1" required type="number" class="form-control" id="title" placeholder="Enter title" name="number_of_unit">
+                    </div>
                     <div class="mb-3 mt-3">
                         <label for="email">title</label>
                         <input  required type="text" class="form-control" id="title" placeholder="Enter title" name="title">

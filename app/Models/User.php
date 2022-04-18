@@ -7,6 +7,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -44,6 +45,7 @@ class User extends Authenticatable
 {
     use HasFactory;
 	protected $table = 'users';
+    protected $appends = ['balancePretty'];
 
 	protected $casts = [
 		'role_id' => 'int',
@@ -67,5 +69,10 @@ class User extends Authenticatable
 		'last_login',
 		'balance'
 	];
+
+    public function getBalancePrettyAttribute()
+    {
+        return number_format($this->balance);
+    }
 
 }

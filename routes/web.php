@@ -21,4 +21,6 @@ Route::post('/postLogin', [\App\Http\Controllers\AuthController::class , 'login'
 
 Route::get('/post/{id}', [\App\Http\Controllers\FrondEnd\post\ClientPostController::class , 'detail'])->name("frontend.detail");
 
-
+Route::post('payment/createPayment', [\App\Http\Controllers\FrondEnd\transaction\TransactionController::class , 'createPaymentUrl'])->name('createPayment');
+Route::get('payment/addCredit', [\App\Http\Controllers\FrondEnd\transaction\TransactionController::class , 'AddCredit'])->name('addCredit');
+Route::get('payment/return', [\App\Http\Controllers\FrondEnd\transaction\TransactionController::class , 'return'])->name('return_payment');

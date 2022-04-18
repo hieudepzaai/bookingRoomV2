@@ -19,6 +19,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/createPost"> <i class="bi bi-file-text"></i> New post</a>
                 </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/createPost"> <i class="bi bi-file-text"></i>Post Management</a>
+                    </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"> <i class="bi bi-bell-fill"></i> notification</a>
                 </li>
@@ -43,8 +46,16 @@
                             <i class="fa-regular fa-user"></i> {{auth()->user()->name}}
                         </a>
                         <ul class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item " href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item fw-bold" href="/">Balance: {{auth()->user()->balancePretty}} VND</a></li>
+                            <li><a class="dropdown-item text-danger" target="_blank" href="/payment/addCredit">Add Credits</a></li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">For selling Post</a></li>
+                            <li><a class="dropdown-item" href="#">For Renting Post</a></li>
+                            <li><a class="dropdown-item" href="#">Find Post</a></li>
+
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

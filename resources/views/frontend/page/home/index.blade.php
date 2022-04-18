@@ -129,5 +129,4 @@
     <!--section list view -->
     <x-post-vertical-list :posts="$for_sold_posts" title="Cho thuê nhà" />
     <!--end section  list view-->
-
 @endsection

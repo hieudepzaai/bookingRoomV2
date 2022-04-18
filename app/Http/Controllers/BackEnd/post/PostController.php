@@ -54,12 +54,6 @@ class PostController extends Controller
                 "message" => "Add Post Successfully"
             ]);
 
-//            return json_encode([
-//               "success" => "true" ,
-//                "message" => "Add Post Successfully",
-//                "data" => $newPost
-//            ]);
-
 
     }
 

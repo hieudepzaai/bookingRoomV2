@@ -4,9 +4,9 @@
         <div class="featured">
             <div class="ribbon">Vip</div>
         </div>
-        <a class="like-btn liked">
-            <i class="fa-brands fa-gratipay"></i>
-        </a>
+{{--        <a class="like-btn liked">--}}
+{{--            <i class="fa-brands fa-gratipay"></i>--}}
+{{--        </a>--}}
         <a href="/post/{{$post->id}}" class="post-item-link-wrapper">
             <div class="post-item-img-container w-100 ">
                 <img class="post-item-img" src="/client/resources/img/land2.jpg" alt="">
