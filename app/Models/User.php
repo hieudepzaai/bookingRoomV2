@@ -67,7 +67,8 @@ class User extends Authenticatable
 		'password',
 		'role_id',
 		'last_login',
-		'balance'
+		'balance',
+        'img'
 	];
 
     public function getBalancePrettyAttribute()

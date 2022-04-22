@@ -28,7 +28,7 @@ $(document).ready(function () {
                 data: item
             };
         });
-        $('#price_type').select2({
+        $('#price_type_id').select2({
             data: results,
             theme: 'bootstrap-5',
             allowClear: true,

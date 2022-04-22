@@ -58,6 +58,7 @@ class Transaction extends Model
 		'created_by',
 		'comment',
 		'status',
-		'payment_method'
+		'payment_method',
+        'description'
 	];
 }

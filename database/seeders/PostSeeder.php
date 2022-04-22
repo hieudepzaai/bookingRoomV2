@@ -89,6 +89,7 @@ class PostSeeder extends Seeder
                 'img' =>$img,
                 'created_by' => $user_id
             ]);
+
         }
     }
 }

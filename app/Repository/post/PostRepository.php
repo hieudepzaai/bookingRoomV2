@@ -50,51 +50,78 @@ class PostRepository implements PostRepositoryInterface
         return $this->model->paginate(\Config::get("AppConstant.items_per_page"));
     }
 
-    public function getSharedRoomPost() {
-        return $this->model->PostItem()->whereCategoryId('4')->limit(8)->latest()->get();
-
-    }
-    public function getForRentRoomPost() {
-//        return $this->model->PostItem()->whereCategoryId('2')->limit(8)->latest()->get();
-        return cache()->remember('ForRentRoom-Cache', 60*60*24 , function ()  {
-            return $this->model->PostItem()->whereCategoryId('2')->limit(8)->latest()->get();
-        });
-    }
-    public function getLatestPost() {
-//        return $this->model->PostItem()->limit(8)->latest()->get();
-        return Cache::remember('LatestPost-Cache', 60*60*24 , function ()  {
-            return $this->model->PostItem()->limit(8)->latest()->get();
-        });
-    }
-    public function getForSoldPost() {
-        return $this->model->PostItem()->whereCategoryId('1')->limit(8)->latest()->get();
-//        return Cache::remember('ForSoldPostCache', 60*60*24 , function ()  {
-//            $this->model->PostItem()->whereCategoryId('1')->limit(8)->latest()->get();
+    public function get8SharedRoomPost() {
+        return $this->model->OrderByVip()->whereCategoryId('4')->limit(8)->latest()->get();
+//        return cache()->remember('ForSharedRoom-Cache', 60*60*24 , function ()  {
+//            return $this->model->OrderByVip()->whereCategoryId('4')->limit(8)->latest()->get();
 //        });
 
     }
-    public function getFindRoomPost()
+    public function getSharedRoomPost() {
+        return $this->model->OrderByVip()->whereCategoryId('4')->latest()->paginate(8);
+
+    }
+    public function get8ForRentRoomPost() {
+        return $this->model->OrderByVip()->whereCategoryId('2')->limit(8)->latest()->get();
+//        return cache()->remember('ForRentRoom-Cache', 60*60*24 , function ()  {
+//            return $this->model->OrderByVip()->whereCategoryId('2')->limit(8)->latest()->get();
+//        });
+    }
+    public function getForRentRoomPost() {
+        return $this->model->OrderByVip()->whereCategoryId('2')->latest()->paginate(8);
+
+    }
+    public function get8LatestPost() {
+        return $this->model->OrderByVip()->limit(8)->latest()->get();
+//        return Cache::remember('LatestPost-Cache', 60*60*24 , function ()  {
+//            return $this->model->OrderByVip()->limit(8)->latest()->get();
+//        });
+    }
+    public function getLatestPost() {
+        return $this->model->OrderByVip()->latest()->paginate(8);
+//        return Cache::remember('LatestPost-Cache', 60*60*24 , function ()  {
+//            return $this->model->OrderByVip()->limit(8)->latest()->get();
+//        });
+    }
+    public function get8ForSoldPost() {
+        return $this->model->whereCategoryId('1')->OrderByVip()->limit(8)->latest()->get();
+//        return Cache::remember('ForSoldPostCache', 60*60*24 , function ()  {
+//            return $this->model->whereCategoryId('1')->OrderByVip()->limit(8)->latest()->get();
+//        });
+
+    }
+    public function getForSoldPost() {
+        return $this->model->whereCategoryId('1')->OrderByVip()->latest()->paginate(8);
+    }
+    public function get8FindRoomPost()
     {
-        return $this->model->PostItem()->whereCategoryId('3')->limit(8)->latest()->get();
+        return $this->model->OrderByVip()->whereCategoryId('3')->limit(8)->latest()->get();
     }
 
     public function getPostByCategoryId($category_id)
     {
-        // TODO: Implement getPostByCategoryId() method.
+        return $this->model->OrderByVip()->whereCategoryId($category_id)->latest()->paginate(8);
+
     }
 
     public function getPostByStreetId($street_id)
     {
-        // TODO: Implement getPostByStreetId() method.
+        return $this->model->OrderByVip()->whereStreetId($street_id)->limit(8)->latest()->get();
     }
 
-    public function getPostByWardId($street_id)
+    public function getPostByWardId($ward_id)
     {
-        // TODO: Implement getPostByWardId() method.
+        return $this->model->OrderByVip()->whereWardId($ward_id)->limit(8)->latest()->get();
+
     }
 
-    public function getPostByProvinceId($street_id)
+    public function getPostByProvinceId($province_id)
     {
-        // TODO: Implement getPostByProvinceId() method.
+        return $this->model->OrderByVip()->whereProvinceId($province_id)->limit(8)->latest()->get();
+    }
+
+    public function getFindRoomPost()
+    {
+        // TODO: Implement getFindRoomPost() method.
     }
 }

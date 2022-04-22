@@ -81,6 +81,10 @@ class Post extends Model
         'created_by' => 'int',
         'img_count' => 'int',
         'bed_room_count' => 'int',
+        'number_of_post_time_unit' => 'int',
+        'balcony_direction' => 'int',
+        'wc_count' =>'int',
+        'is_vip' => 'int'
 
     ];
 
@@ -111,9 +115,13 @@ class Post extends Model
         'created_at',
         'img_count',
         'bed_room_count',
-        'balcony_count',
+        'wc_count',
+        'balcony_direction',
         'type_of_apartment',
-        'interior_condition'
+        'interior_condition',
+        'number_of_post_time_unit',
+        'is_vip',
+        'view_count'
     ];
 
     public function scopePostDetail($query)
@@ -129,14 +137,29 @@ class Post extends Model
                                 province.name as province_name ,district.name as district_name ,  ward.name as ward_name ,street.name as street_name ,
                                 post_premium_type.premium_type as post_premium_type  , post_premium_type.unit  , post_premium_type.price_per_unit  ,users.name as  user_name  ");
     }
+    public function scopeOrderByVip($query){
+        return $query->where('is_vip' ,1)->where('is_disabled' , 0)->orderBy('priority' , 'desc');
+    }
 
     public function getDiffInDateAttribute()
     {
-       return $this->created_at != null ? now()->diffForHumans($this->created_at) : "";
+       return $this->created_at != null ? Carbon::parse($this->created_at)->diffForHumans() : "";
+    }
+    public function getImgAttribute($value)
+    {
+        return $this->FilterUrl($value);
+    }
+    public function getPriceAttribute($value)
+    {
+        return number_format($value);
     }
     public function scopePostItem($query) {
         return $query->leftJoin("post_category", "post.category_id", "=", "post_category.id")
             ->selectRaw("post.* , post_category.name as category_name , post_category.description as category_description");
+    }
+    private function FilterUrl ($value) {
+        if(str_starts_with($value  , "http")) return  $value;
+        else return env('APP_URL').$value;
     }
 
 }

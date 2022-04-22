@@ -26,20 +26,22 @@ class VnPayService
     public function return(Request $request)
     {
 //        return $request;
+        $transaction = "";
         $transaction_id = session('transaction_id');
+        if($transaction_id== null) return redirect('/');
         if($request->vnp_ResponseCode == "00") {
             $transaction = Transaction::find($transaction_id);
             $transaction->update(['status' => "success"]);
             $new_balance = Auth::user()->balance + $transaction->amount ;
             Auth::user()->update(['balance' => $new_balance]);
 
-            if($new_balance != Auth::user()->balance) return false;
+//            if($new_balance != Auth::user()->balance) return false;
             session()->forget('transaction_id');
-            return true;
+//            return $transaction;
         }
         Transaction::find($transaction_id)->update(['status' => "unsuccessfully"]);
         session()->forget('transaction_id');
-        return false;
+        return $transaction;
     }
     public function createPaymentUrl(Request $request ,string $returnUrl)
     {
@@ -50,10 +52,11 @@ class VnPayService
         $transation = Transaction::create([
             'created_by' => Auth::id(),
             'amount' => $request->amount,
-            'transaction_type' => "add credit",
+            'transaction_type' => "money in",
             'balance_before_transaction'        => $user->balance,
             'status'   => "unsuccessfully",
-            'payment_method' => "Online"
+            'payment_method' => "Online",
+            'description' => "Add credit online"
 
         ]);
         session(['transaction_id' => $transation->id]);

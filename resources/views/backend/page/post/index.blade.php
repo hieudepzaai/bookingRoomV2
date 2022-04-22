@@ -46,7 +46,7 @@
 
                             <span class="fw-bold ">Deposit amount: </span>
                             <span
-                                class="badge bg-secondary text-white me-4 ">  {{$post->deposit_amount}} {{Config::get("AppConstant.system_currency_unit")}} </span>
+                                class="badge bg-secondary text-white me-4 ">  {{number_format($post->deposit_amount) }} {{Config::get("AppConstant.system_currency_unit")}} </span>
 
                             <span class="fw-bold ">Post Vip Type: </span>
                             <span class="badge bg-warning text-white me-4">  {{$post->post_premium_type}}  </span>
@@ -63,7 +63,7 @@
                         </td>
                         <td>{{$post->category_name}}</td>
                         <td><span
-                                class="badge bg-warning">{{number_format($post->price, 0)}} {{Config::get("AppConstant.system_currency_unit")}}</span>
+                                class="badge bg-warning">{{ $post->price}} {{Config::get("AppConstant.system_currency_unit")}}</span>
                         </td>
                         <td>
                             <span class="badge

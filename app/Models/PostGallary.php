@@ -13,15 +13,13 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int|null $post_id
- * @property int|null $file_id
- * @property string|null $path
+ * @property string|null $img
  * @property string|null $gallary_type
  * @property int|null $gallary_order
  * @package App\Models
  * @method static \Illuminate\Database\Eloquent\Builder|PostGallary newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PostGallary newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|PostGallary query()
- * @method static \Illuminate\Database\Eloquent\Builder|PostGallary whereFileId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PostGallary whereGallaryOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PostGallary whereGallaryType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|PostGallary whereId($value)
@@ -36,14 +34,12 @@ class PostGallary extends Model
 
 	protected $casts = [
 		'post_id' => 'int',
-		'file_id' => 'int',
 		'gallary_order' => 'int'
 	];
 
 	protected $fillable = [
 		'post_id',
-		'file_id',
-		'path',
+		'img',
 		'gallary_type',
 		'gallary_order'
 	];

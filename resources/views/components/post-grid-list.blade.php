@@ -3,7 +3,7 @@
     <div class="container ">
         <div class="row">
             <div class="col-12">
-                <a class="section-title">
+                <a class="section-title" href="{{$url}}">
                     {{ $title }}
                 </a>
             </div>
@@ -15,7 +15,7 @@
             <div class="col-12">
                 <div class="w-100 text-center">
                     <!--                    <span class="badge bg-success">Success</span>-->
-                    <a class="badge bg-success" href="">Xem thêm ></a>
+                    <a class="badge bg-success" href="{{$url}}">Xem thêm ></a>
 
                 </div>
             </div>

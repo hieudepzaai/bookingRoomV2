@@ -1,17 +1,19 @@
 <div class="col-md-3 ">
 
     <div class="post-item-container w-100 shadow  ">
+        @if($post->is_vip == 1)
         <div class="featured">
             <div class="ribbon">Vip</div>
         </div>
+        @endif
 {{--        <a class="like-btn liked">--}}
 {{--            <i class="fa-brands fa-gratipay"></i>--}}
 {{--        </a>--}}
         <a href="/post/{{$post->id}}" class="post-item-link-wrapper">
             <div class="post-item-img-container w-100 ">
-                <img class="post-item-img" src="/client/resources/img/land2.jpg" alt="">
+                <img class="post-item-img" src="{{$post->img}}" alt="">
                 <div class="img-count">
-                    <i class="fa-solid fa-images"></i> <span>20</span>
+                    <i class="fa-solid fa-images"></i> <span>{{$post->img_count}}</span>
                 </div>
             </div>
             <div class="w-100 post-item-body ">

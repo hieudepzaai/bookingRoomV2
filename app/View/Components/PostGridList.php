@@ -8,16 +8,19 @@ class PostGridList extends Component
 {
     public $posts;
     public string $title;
+    public string $url;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($posts , string $title)
+    public function __construct($posts , string $title, string $url)
     {
         //
         $this->posts = $posts;
         $this->title = $title;
+        $this->url = $url;
     }
 
     /**

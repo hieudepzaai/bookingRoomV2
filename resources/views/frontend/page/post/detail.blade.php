@@ -19,55 +19,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <x-post-preview-slider  />
+
                     <div class="w-100 gallary-area">
                         <div class="ribbon">Vip</div>
                         <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                            <li data-thumb="/client/resources/img/cS-1.jpg">
-                                <img src="/client/resources/img/cS-1.jpg" />
+                            @foreach($post_images as $item)
+                            <li data-thumb="{{$item->img}}">
+                                <img src="{{$item->img}}" />
                             </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-2.jpg">
-                                <img src="/client/resources/img/cS-2.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-3.jpg">
-                                <img src="/client/resources/img/cS-3.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-4.jpg">
-                                <img src="/client/resources/img/cS-4.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-5.jpg">
-                                <img src="/client/resources/img/cS-5.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-6.jpg">
-                                <img src="/client/resources/img/cS-6.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-7.jpg">
-                                <img src="/client/resources/img/cS-7.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-8.jpg">
-                                <img src="/client/resources/img/cS-8.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-9.jpg">
-                                <img src="/client/resources/img/cS-9.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-10.jpg">
-                                <img src="/client/resources/img/cS-10.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-11.jpg">
-                                <img src="/client/resources/img/cS-11.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-12.jpg">
-                                <img src="/client/resources/img/cS-12.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-13.jpg">
-                                <img src="/client/resources/img/cS-13.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-14.jpg">
-                                <img src="/client/resources/img/cS-14.jpg" />
-                            </li>
-                            <li data-thumb="/client/resources/img/thumb/cS-15.jpg">
-                                <img src="/client/resources/img/cS-15.jpg" />
-                            </li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
@@ -116,7 +77,7 @@
 
                         <h6 class="text-danger ">Mô tả :</h6>
                         <div class="w-100">
-                            {{$post->description}}
+                           {!! $post->description !!}
                         </div>
 
                     </div>
@@ -158,33 +119,19 @@
                             Bình luận
                         </h4>
                         <div class="comment-group w-100">
-                            <div class="comment-item">
-                                <div class="text-primary comment-user">
-                                    <div class="avatar-container">
-                                        <img class="mini-avatar" src="/client/resources/img/cS-1.jpg" alt="">
+                            @foreach($comments as $comment)
+                                <div class="comment-item">
+                                    <div class="text-primary comment-user">
+                                        <div class="avatar-container">
+                                            <img class="mini-avatar" src="{{$comment->img}}" alt="">
+                                        </div>
+                                        <span class="fw-bold">{{$comment->user_name}}</span>
                                     </div>
-                                    <span class="fw-bold">Người dùng</span>
+                                    <p class="bg-">{{$comment->content}}</p>
                                 </div>
-                                <p class="bg-">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci at autem cumque debitis distinctio dolores fuga, illum molestiae nemo neque nisi optio perferendis recusandae rem reprehenderit saepe ut veniam vero.</p>
-                            </div>
-                            <div class="comment-item">
-                                <div class="text-primary comment-user">
-                                    <div class="avatar-container">
-                                        <img class="mini-avatar" src="/client/resources/img/cS-1.jpg" alt="">
-                                    </div>
-                                    <span class="fw-bold">Người dùng</span>
-                                </div>
-                                <p class="bg-">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci at autem cumque debitis distinctio dolores fuga, illum molestiae nemo neque nisi optio perferendis recusandae rem reprehenderit saepe ut veniam vero.</p>
-                            </div>
-                            <div class="comment-item">
-                                <div class="text-primary comment-user">
-                                    <div class="avatar-container">
-                                        <img class="mini-avatar" src="/client/resources/img/cS-1.jpg" alt="">
-                                    </div>
-                                    <span class="fw-bold">Người dùng</span>
-                                </div>
-                                <p class="bg-">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci at autem cumque debitis distinctio dolores fuga, illum molestiae nemo neque nisi optio perferendis recusandae rem reprehenderit saepe ut veniam vero.</p>
-                            </div>
+                            @endforeach
+
+
                         </div>
 
                         <form class="leave-comment-textarea">

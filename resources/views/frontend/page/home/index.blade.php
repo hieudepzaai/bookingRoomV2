@@ -64,50 +64,20 @@
                         Danh mục
                     </h4>
                 </div>
+                @foreach($categories as $category)
                 <div class="col-lg-3 col-sm-6">
-                    <a class="category-item shadow ">
+                    <a class="category-item shadow " href="/posts/category/{{$category->id}}">
                         <div class="category-icon rounded-circle bg-yl">
                             <i class="fa-solid fa-house-user"></i>
                         </div>
                         <div class="category-name">
-                            Cho thuê nhà
+                            {{$category->description}}
                         </div>
 
                     </a>
                 </div>
-                <div class="col-lg-3 col-sm-6">
-                    <a class="category-item shadow  ">
-                        <div class="category-icon rounded-circle bg-yl">
-                            <i class="fa-solid fa-house-user"></i>
-                        </div>
-                        <div class="category-name">
-                            Cho thuê nhà
-                        </div>
+                @endforeach
 
-                    </a>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <a class="category-item shadow ">
-                        <div class="category-icon rounded-circle bg-yl">
-                            <i class="fa-solid fa-house-user"></i>
-                        </div>
-                        <div class="category-name">
-                            Tìm người ở ghép
-                        </div>
-
-                    </a>
-                </div>
-                <div class="col-lg-3 col-sm-6">
-                    <a class="category-item shadow ">
-                        <div class="category-icon rounded-circle bg-yl">
-                            <i class="fa-solid fa-house-user"></i>
-                        </div>
-                        <div class="category-name">
-                            Bán Nhà
-                        </div>
-
-                    </a>
-                </div>
 
             </div>
         </div>
@@ -115,18 +85,18 @@
     <!--end category-->
 
     <!--section specific-->
-    <x-post-grid-list :posts="$latest" title="Bài đăng mới nhất" />
+    <x-post-grid-list :posts="$latest" title="Bài đăng mới nhất" url="/posts/latest" />
     <!--end section specific-->
 
     <!--section specific slider-->
-    <x-post-slider-list :posts="$for_sold_posts" title="Bán nhà" />
+    <x-post-slider-list :posts="$for_sold_posts" title="Bán nhà" url=""/>
     <!--end section specific slider-->
 
     <!--section specific-->
-    <x-post-grid-list :posts="$for_rent_posts" title="Cho thuê nhà" />
+    <x-post-grid-list :posts="$for_rent_posts" title="Cho thuê nhà" url="/posts/category/2" />
     <!--end section specific-->
 
     <!--section list view -->
-    <x-post-vertical-list :posts="$for_sold_posts" title="Cho thuê nhà" />
+    <x-post-vertical-list :posts="$shared_room_post" title="Tìm người ở ghép" url="/posts/category/1" />
     <!--end section  list view-->
 @endsection

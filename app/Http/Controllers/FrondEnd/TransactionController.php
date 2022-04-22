@@ -1,16 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\FrondEnd\transaction;
+namespace App\Http\Controllers\FrondEnd;
 
 use App\Http\Controllers\Controller;
-use App\Models\Transaction;
-use App\Models\User;
-use App\Models\UserMembership;
 use App\Service\VNPay\VnPayService;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
+use function route;
+use function view;
 
 class TransactionController extends  Controller
 {
@@ -28,11 +24,18 @@ class TransactionController extends  Controller
     }
     public function return(Request $request)
     {
-        $status = $this->vnPayService->return($request);
-        if($status) {
-            return "success";
+        $transaction = $this->vnPayService->return($request);
+//        return $transaction;
+
+        if($transaction['status'] == null ) return redirect('/');
+        if($transaction['status']=="success") {
+            return view('frontend.page.payment.addCreditSuccess' , [
+                'transaction' => $transaction
+            ]);
         }
-        else return "false";
+        else return view('frontend.page.payment.addCreditFail' , [
+            'transaction' => $transaction
+        ]);
     }
 
 
